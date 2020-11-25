@@ -6,5 +6,5 @@ package Models;
 */
 public enum RolUsuario {
 
-	Jefe, Mecánico, Ventas;
+	Jefe, Mecanico, Ventas;
 }

@@ -131,7 +131,7 @@ public class Login extends JFrame {
 							
 						break;
 						
-						case Mecánico:
+						case Mecanico:
 							
 						break;
 						
