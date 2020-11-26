@@ -61,7 +61,7 @@ constraint fk_venta_usuario foreign key(id_usuario) references usuario(id_usuari
 );
 
 create table if not exists jefe(
-id_jefe int primary key auto_increment,
+id_jefe int default 1,
 id_usuario int,
 
 constraint fk_jefe_usuario foreign key(id_usuario) references usuario(id_usuario)
@@ -141,10 +141,109 @@ id_vehiculo int,
 id_mecanico int,
 inicio_reparacion datetime,
 fin_reparacion datetime,
-horas_reparacion decimal(5,3),
+horas_reparacion float,
 tipo_reparacion varchar(250) not null,
 descripcion_reparacion text,
 
 constraint fk_repara_vehiculo foreign key(id_vehiculo) references vehiculo(id_vehiculo),
 constraint fk_repara_mecanico foreign key(id_mecanico) references mecanico(id_mecanico)
 );
+
+insert into cliente(nombre_cliente, nif_cliente, email_cliente, num_cuenta)
+values("Pepe Grillo", "15782668M", "pepeg@gmail.com", "4445557788VD"),
+("Grillo Man", "12285568L", "grillom@gmail.com", "55245587245JK"),
+("Pinocho", "15474168K", "pinocho@gmail.com", "1112459524TH");
+
+insert into concesionario(cif, nombre_concesionario, provincia, direccion_concesionario, descripcion_concesionario)
+values("Jl1234n", "Seat Antequera", "Malaga", "Avd. Naciones nº7",""),
+("N234h89", "Mercedes Malaga", "Malaga", "Calle Cruz Verde nº35",""),
+("F48930D", "Peugeot Velez", "Malaga", "Poligono Pañoleta nº12","");
+
+insert into especialidad(nombre_especialidad, descripcion_especialidad)
+values("Ruedas",""),
+("Motor",""),
+("Embrague","");
+
+alter table usuario
+modify nombre_usuario varchar(100) unique;
+
+insert into usuario(id_concesionario,nombre_usuario, contrasenia, antiguedad, sueldo, tipo_contrato, nif_usuario, email_usuario, estudios)
+values(3,"Carmen V", "fbe60144cc372802e61d766d91e13d9b", 7 , 1784.14, "Fijo", "14257491M","carmenv@gmail.com", "CFGM Mecánica"),
+(1,"Laura R", "ba89cfd9f0c17d491750140c4656e536", 2, 997.02 , "Fijo discontinuo", "22601478L","laurar@gmail.com", "Curso Administracion (2200h)"),
+(2,"Pepe D", "18da9cfc427be98d938d36e9985cfa8c", 1, 2000.59, "Eventual", "05620074V","peped@gmail.com", "ESO");
+
+insert into mecanico(id_usuario, id_especialidad, id_jefemecanico)
+values(1, 2, 1),
+(1, 3, 1),
+(1, 2, 1);
+
+insert into venta(id_usuario, num_vendidos, fecha_venta)
+values(2, 2, current_date()),
+(3, 1, current_date()),
+(1, 2, current_date());
+
+insert into jefe(id_usuario)
+values(2),
+(3),
+(1);
+
+insert into vehiculo(id_concesionario, id_cliente, id_ventas, num_bastidor, matricula, marca, 
+		modelo, tipo_vehiculo, color, potencia, anio, combustible, precio, descripcion_vehiculo)
+values(2, 2, 1, "b1475h215","", "Seat", "Leon", "Nuevo", "Azul", "105CV", 2020, "Gasolina", 18687.47, ""),
+(3, 1, 3, "124v25478h2", "5458 BGF", "Opel", "Corsa", "Segunda mano", "Blanco", "72CV", 2001, "Gasoil", 2000, ""),
+(3, 2, 1, "9956g245H", "1424 LKJ", "Hyundai", "i20", "Km 0", "Negro", "110CV", 2020, "Hibrido", 24985.95,"");
+
+insert into vehiculo(id_concesionario, id_cliente, id_ventas, num_bastidor, matricula, marca, 
+		modelo, tipo_vehiculo, color, potencia, anio, combustible, precio, descripcion_vehiculo)
+values(2, 2, 1, "b1453h215","", "Suzuki", "GS-500", "Nuevo", "Azul", "48CV", 2020, "Gasolina", 12687.47, ""),
+(3, 1, 3, "124v11178h2", "5451 BGF", "Kawasaki", "z-750", "Segunda mano", "Blanco", "120CV", 2001, "Gasolina", 3000, ""),
+(3, 2, 1, "8886g245H", "1124 GKJ", "Vespa", "Elettrica L3", "Km 0", "Negro", "49CV", 2020, "Electrico", 5985.95,"");
+
+insert into coche(id_vehiculo, tipo_radio, tipo_freno, tipo_embrague, tipo_emision, numero_plaza)
+values(3, "1DIN", "Discos flotantes con pinzas fijas", "Embrague Hidráulico", 'B', '5'),
+(1, "Normal", "Discos ranurados con pinzas fijas", "Embrague Mecánico", 'O', '4');
+
+insert into motocicleta(id_vehiculo,tipo_motocicleta, tipo_freno, tipo_horquilla, numero_plaza)
+values(5, "Naker", "Frenada combinada", "Telescópica", '2'),
+(1, "Naker", "ABS", "Sin horquilla", '1');
+
+insert into ciclomotor(id_vehiculo,tipo_ciclomotor)
+values(5, "Scooter"),
+(1, "Custom");
+
+insert into propuesta(id_ventas, id_cliente, id_vehiculo, precio_propuesta, fecha_propuesta, fecha_validez, descripcion_propuesta)
+values(3, 1, 5, 3000, current_date(), "2020-11-18", "");
+
+insert into repara(id_vehiculo, id_mecanico, inicio_reparacion, fin_reparacion, horas_reparacion, tipo_reparacion, descripcion_reparacion)
+values(2, 1, '2020-10-29 08:00:00', current_date(), 8.20, "Reparacion simple de ruedas", ""),
+(6, 1, current_date(), null , 0.0, "Reparacion del embrague", "");
+
+alter table propuesta
+add nombre_usuario varchar(50) default null;
+
+update propuesta
+set nombre_usuario = "Lolita"
+where id_cliente = 1;
+
+alter table usuario
+add rol_usuario enum('Jefe', 'Ventas', 'Mecanico') not null;
+
+UPDATE `proyecto_mecanica`.`usuario` SET `rol_usuario` = 'Ventas' WHERE (`id_usuario` = '2');
+UPDATE `proyecto_mecanica`.`usuario` SET `rol_usuario` = 'Mecánico' WHERE (`id_usuario` = '1');
+
+
+alter table propuesta
+add estado_propuesta varchar(50) default "En curso";
+
+alter table mecanico
+add tipo_empleado enum('Jefe', 'Empleado') default 'Empleado';
+
+UPDATE `proyecto_mecanica`.`mecanico` SET `tipo_empleado` = 'Jefe' WHERE (`id_mecanico` = '2');
+
+alter table vehiculo
+add km int(6) default 0;
+
+UPDATE `proyecto_mecanica`.`propuesta` SET `estado_propuesta` = 'Finalizada' WHERE (`id_propuesta` = '1');
+
+insert into usuario(id_concesionario,nombre_usuario, contrasenia, antiguedad, sueldo, tipo_contrato, nif_usuario, email_usuario, estudios)
+values(2,"Hola", "4d186321c1a7f0f354b297e8914ab240", 0 , 1548.26, "Fijo", "22541521M","hola", "ESO");
