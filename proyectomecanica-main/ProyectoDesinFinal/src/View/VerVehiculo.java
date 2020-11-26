@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import DAO.BusquedaVehiculo;
 import Models.Vehiculo;
+import DAO.BusquedaVehiculo;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -26,8 +26,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-/*
- * En esta vista tenemos la ficha del vehículo y a través del número de bastidor mostramos el vehículo.
+/**
+ * 
+ * @author Carmen
+ *
  */
 public class VerVehiculo extends JFrame {
 
@@ -35,6 +37,16 @@ public class VerVehiculo extends JFrame {
 	private JButton btnOkVerVehiculos;
 	private JTextField tfNumBastidorVerVehiculo;
 	private JButton btnVolverVerVehiculo;
+	private JTextField tfMatricula;
+	private JTextField tfMarca;
+	private JTextField tfModelo;
+	private JTextField tfTipoVehiculo;
+	private JTextField tfColor;
+	private JTextField tfPotencia;
+	private JTextField tfAño;
+	private JTextField tfCombustible;
+	private JTextField tfPrecio;
+	private JTextField tfDescripcion;
 
 	/**
 	 * Launch the application.
@@ -57,7 +69,7 @@ public class VerVehiculo extends JFrame {
 	 */
 	public VerVehiculo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 50, 800, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,150 +77,155 @@ public class VerVehiculo extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 434, 44);
+		panel.setBounds(0, 0, 784, 44);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		
 		JLabel lblVerVehiculo = new JLabel("Ver veh\u00EDculo");
-		lblVerVehiculo.setBounds(171, 11, 98, 23);
+		lblVerVehiculo.setBounds(338, 11, 98, 23);
 		lblVerVehiculo.setForeground(Color.BLACK);
 		lblVerVehiculo.setFont(new Font("SansSerif", Font.PLAIN, 17));
 		panel.add(lblVerVehiculo);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(21, 55, 390, 166);
+		panel_1.setBounds(21, 55, 742, 427);
 		contentPane.setBackground(new Color(233,196,106));
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JLabel lbl1 = new JLabel("N\u00FAmero de bastidor:");
-		lbl1.setBounds(10, 11, 113, 16);
+		lbl1.setBounds(10, 26, 113, 16);
 		lbl1.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		panel_1.add(lbl1);
 		
 		JLabel lbl2 = new JLabel("Matr\u00EDcula:");
-		lbl2.setBounds(10, 38, 113, 16);
+		lbl2.setBounds(10, 90, 113, 16);
 		lbl2.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		panel_1.add(lbl2);
 		
 		JLabel lbl3 = new JLabel("Marca:");
 		lbl3.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl3.setBounds(10, 65, 113, 14);
+		lbl3.setBounds(10, 155, 113, 14);
 		panel_1.add(lbl3);
 		
 		JLabel lbl4 = new JLabel("Modelo:");
 		lbl4.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl4.setBounds(10, 90, 113, 14);
+		lbl4.setBounds(10, 229, 113, 14);
 		panel_1.add(lbl4);
 		
 		JLabel lbl5 = new JLabel("Tipo de vehiculo:");
 		lbl5.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl5.setBounds(10, 115, 113, 14);
+		lbl5.setBounds(10, 302, 113, 14);
 		panel_1.add(lbl5);
-		
-		JLabel lblMatricula = new JLabel("");
-		lblMatricula.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblMatricula.setBounds(148, 40, 53, 14);
-		lblMatricula.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblMatricula);
-		
-		JLabel lblMarca = new JLabel("");
-		lblMarca.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblMarca.setBounds(148, 65, 53, 14);
-		lblMarca.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblMarca);
-		
-		JLabel lblModelo = new JLabel("");
-		lblModelo.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblModelo.setBounds(148, 90, 53, 14);
-		lblModelo.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblModelo);
-		
-		JLabel lblTipo_vehiculo = new JLabel("");
-		lblTipo_vehiculo.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblTipo_vehiculo.setBounds(148, 115, 53, 14);
-		lblTipo_vehiculo.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblTipo_vehiculo);
 		
 		JLabel lbl6 = new JLabel("Color:");
 		lbl6.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl6.setBounds(211, 13, 113, 14);
+		lbl6.setBounds(384, 27, 113, 14);
 		panel_1.add(lbl6);
 		
 		JLabel lbl7 = new JLabel("Potencia:");
 		lbl7.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl7.setBounds(211, 40, 113, 14);
+		lbl7.setBounds(384, 86, 113, 14);
 		panel_1.add(lbl7);
 		
 		JLabel lbl8 = new JLabel("A\u00F1o:");
 		lbl8.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl8.setBounds(211, 66, 113, 14);
+		lbl8.setBounds(384, 155, 113, 14);
 		panel_1.add(lbl8);
 		
 		JLabel lbl9 = new JLabel("Combustible:");
 		lbl9.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl9.setBounds(211, 91, 113, 14);
+		lbl9.setBounds(384, 229, 113, 14);
 		panel_1.add(lbl9);
 		
 		JLabel lbl10 = new JLabel("Precio:");
 		lbl10.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl10.setBounds(211, 116, 113, 14);
+		lbl10.setBounds(384, 302, 113, 14);
 		panel_1.add(lbl10);
-		
-		JLabel lblColor = new JLabel("");
-		lblColor.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblColor.setBackground(Color.WHITE);
-		lblColor.setBounds(334, 11, 46, 14);
-		lblColor.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblColor);
-		
-		JLabel lblPotencia = new JLabel("");
-		lblPotencia.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblPotencia.setBackground(Color.WHITE);
-		lblPotencia.setBounds(334, 40, 46, 14);
-		lblPotencia.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblPotencia);
-		
-		JLabel lblAnio = new JLabel("");
-		lblAnio.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblAnio.setBackground(Color.WHITE);
-		lblAnio.setBounds(334, 65, 46, 14);
-		lblAnio.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblAnio);
-		
-		JLabel lblCombustible = new JLabel("");
-		lblCombustible.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblCombustible.setBackground(Color.WHITE);
-		lblCombustible.setBounds(334, 90, 46, 14);
-		lblCombustible.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblCombustible);
-		
-		JLabel lblPrecio = new JLabel("");
-		lblPrecio.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblPrecio.setBackground(Color.WHITE);
-		lblPrecio.setBounds(334, 115, 46, 14);
-		lblPrecio.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblPrecio);
 		
 		JLabel lbl11 = new JLabel("Descripci\u00F3n:");
 		lbl11.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl11.setBounds(10, 140, 69, 14);
+		lbl11.setBounds(26, 378, 69, 14);
 		panel_1.add(lbl11);
-		
-		JLabel lblDescripcion_vehiculo = new JLabel("");
-		lblDescripcion_vehiculo.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblDescripcion_vehiculo.setBounds(91, 140, 289, 15);
-		lblDescripcion_vehiculo.setBorder(BorderFactory.createTitledBorder(""));
-		panel_1.add(lblDescripcion_vehiculo);
 		
 		tfNumBastidorVerVehiculo = new JTextField();
 		tfNumBastidorVerVehiculo.setBackground(Color.WHITE);
 		tfNumBastidorVerVehiculo.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		tfNumBastidorVerVehiculo.setBounds(148, 9, 53, 20);
+		tfNumBastidorVerVehiculo.setBounds(148, 20, 226, 29);
 		panel_1.add(tfNumBastidorVerVehiculo);
 		tfNumBastidorVerVehiculo.setColumns(10);
+		
+		tfMatricula = new JTextField();
+		tfMatricula.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfMatricula.setColumns(10);
+		tfMatricula.setBackground(Color.WHITE);
+		tfMatricula.setBounds(148, 79, 226, 29);
+		panel_1.add(tfMatricula);
+		
+		tfMarca = new JTextField();
+		tfMarca.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfMarca.setColumns(10);
+		tfMarca.setBackground(Color.WHITE);
+		tfMarca.setBounds(148, 148, 226, 29);
+		panel_1.add(tfMarca);
+		
+		tfModelo = new JTextField();
+		tfModelo.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfModelo.setColumns(10);
+		tfModelo.setBackground(Color.WHITE);
+		tfModelo.setBounds(148, 217, 226, 29);
+		panel_1.add(tfModelo);
+		
+		tfTipoVehiculo = new JTextField();
+		tfTipoVehiculo.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfTipoVehiculo.setColumns(10);
+		tfTipoVehiculo.setBackground(Color.WHITE);
+		tfTipoVehiculo.setBounds(148, 290, 226, 29);
+		panel_1.add(tfTipoVehiculo);
+		
+		tfColor = new JTextField();
+		tfColor.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfColor.setColumns(10);
+		tfColor.setBackground(Color.WHITE);
+		tfColor.setBounds(469, 20, 263, 29);
+		panel_1.add(tfColor);
+		
+		tfPotencia = new JTextField();
+		tfPotencia.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfPotencia.setColumns(10);
+		tfPotencia.setBackground(Color.WHITE);
+		tfPotencia.setBounds(469, 79, 263, 29);
+		panel_1.add(tfPotencia);
+		
+		tfAño = new JTextField();
+		tfAño.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfAño.setColumns(10);
+		tfAño.setBackground(Color.WHITE);
+		tfAño.setBounds(469, 148, 263, 29);
+		panel_1.add(tfAño);
+		
+		tfCombustible = new JTextField();
+		tfCombustible.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfCombustible.setColumns(10);
+		tfCombustible.setBackground(Color.WHITE);
+		tfCombustible.setBounds(469, 217, 263, 29);
+		panel_1.add(tfCombustible);
+		
+		tfPrecio = new JTextField();
+		tfPrecio.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfPrecio.setColumns(10);
+		tfPrecio.setBackground(Color.WHITE);
+		tfPrecio.setBounds(469, 290, 263, 29);
+		panel_1.add(tfPrecio);
+		
+		tfDescripcion = new JTextField();
+		tfDescripcion.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfDescripcion.setColumns(10);
+		tfDescripcion.setBackground(Color.WHITE);
+		tfDescripcion.setBounds(148, 354, 584, 62);
+		panel_1.add(tfDescripcion);
 		
 		/**
 		 * Botón que pulsa para buscar vehículos
@@ -218,8 +235,9 @@ public class VerVehiculo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				buscar();
 			}
-
+//Aniador if != null en los tf
 			private void buscar() {
+				// TODO Auto-generated method stub
 				String numero_bastidor = tfNumBastidorVerVehiculo.getText();
 				
 				//instancia clase BusquedaVehiculo
@@ -228,11 +246,21 @@ public class VerVehiculo extends JFrame {
 				Vehiculo vehiculo2 = new Vehiculo();
 				vehiculo2.setNumBastidor(numero_bastidor);
 								
-				Vehiculo vehi = busquedavehiculo.obtenerVehiculo(vehiculo2);
+				Vehiculo vehi = busquedavehiculo.obtenerVehiculoNum(vehiculo2);
 				
 				if (vehi != null) {
 					JOptionPane.showMessageDialog(contentPane, "Okay");
-					lblMatricula.setText(vehi.getMatricula());
+					tfMatricula.setText(vehi.getMatricula());
+					tfMarca.setText(vehi.getMarca());
+					tfModelo.setText(vehi.getModelo());
+					tfTipoVehiculo.setText(vehi.getTipoVehiculo());
+					tfColor.setText(vehi.getColor());
+					tfPotencia.setText(vehi.getPotencia());
+					tfAño.setText(vehi.getAnio());
+					tfCombustible.setText(vehi.getCombustible());
+					tfPrecio.setText(vehi.getPrecio().toString());
+					tfDescripcion.setText(vehi.getDescripcionVeehiculo());
+					
 				} else
 					JOptionPane.showMessageDialog(contentPane, "No hay ningún coche");
 				
@@ -241,7 +269,7 @@ public class VerVehiculo extends JFrame {
 		});
 		btnOkVerVehiculos.setBackground(Color.WHITE);
 		btnOkVerVehiculos.setFont(new Font("SansSerif", Font.PLAIN, 11));
-		btnOkVerVehiculos.setBounds(325, 227, 86, 23);
+		btnOkVerVehiculos.setBounds(662, 511, 101, 51);
 		contentPane.add(btnOkVerVehiculos);
 		
 		btnVolverVerVehiculo = new JButton("\uD83E\uDC60");
@@ -253,7 +281,7 @@ public class VerVehiculo extends JFrame {
 		});
 		btnVolverVerVehiculo.setBackground(Color.WHITE);
 		btnVolverVerVehiculo.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		btnVolverVerVehiculo.setBounds(20, 227, 51, 23);
+		btnVolverVerVehiculo.setBounds(21, 511, 101, 61);
 		contentPane.add(btnVolverVerVehiculo);
 		
 		

@@ -10,8 +10,8 @@ public class Propuesta {
 	 * Definimos los atributos de usuarios
 	 */
 	
-	private int idPropuesta, idVentas, idCliente, idVehiculo;
-	private float precioPropuesta;
+	private Integer idPropuesta, idVentas, idCliente, idVehiculo;
+	private Float precioPropuesta;
 	private String nombreUsuario, fechaPropuesta, fechaValidez, descripcionPropuesta, estadoPropuesta;
 	
 	/**
@@ -21,7 +21,7 @@ public class Propuesta {
 	}
 	
 	/**
-	 * Constructor al que le pasamos los parametros que sera los que les pasemos de la BBDD o lo introduzcamos nosotros.
+	 * Constructor al que le pasamos los parametros que sera los que les pasemos de la BBDD o lo Integerroduzcamos nosotros.
 	 * @param idPropuesta
 	 * @param idVentas
 	 * @param idCliente
@@ -31,7 +31,7 @@ public class Propuesta {
 	 * @param fechaValidez
 	 * @param descrpcionPropuesta
 	 */
-	public Propuesta(int idPropuesta,int idVentas,int idCliente,int idVehiculo,float precioPropuesta, 
+	public Propuesta(Integer idPropuesta,Integer idVentas,Integer idCliente,Integer idVehiculo,Float precioPropuesta, 
 				String nombreUsuario, String fechaPropuesta, String fechaValidez, String descrpcionPropuesta, String estadoPropuesta) {
 		this.idPropuesta = idPropuesta;
 		this.idVentas = idVentas;
@@ -47,7 +47,7 @@ public class Propuesta {
 	}
 	
 	/**
-	 * Constructor al que le pasamos los parametros que sera los que les pasemos de la BBDD o lo introduzcamos nosotros.
+	 * Constructor al que le pasamos los parametros que sera los que les pasemos de la BBDD o lo Integerroduzcamos nosotros.
 	 * @param idVentas
 	 * @param idCliente
 	 * @param idVehiculo
@@ -56,11 +56,8 @@ public class Propuesta {
 	 * @param fechaValidez
 	 * @param descrpcionPropuesta
 	 */
-	public Propuesta(int idVentas,int idCliente,int idVehiculo,float precioPropuesta, 
-				String nombreUsuario, String fechaPropuesta, String fechaValidez, String descrpcionPropuesta) {
-		this.idVentas = idVentas;
-		this.idCliente = idCliente;
-		this.idVehiculo = idVehiculo;
+	public Propuesta(Float precioPropuesta, String nombreUsuario, String fechaPropuesta, String descrpcionPropuesta) {
+		
 		this.precioPropuesta = precioPropuesta;
 		this.nombreUsuario = nombreUsuario;
 		this.fechaPropuesta = fechaPropuesta;
@@ -73,43 +70,43 @@ public class Propuesta {
 	 * Realizamos los Setters and Getters
 	 */
 
-	public int getIdPropuesta() {
+	public Integer getIdPropuesta() {
 		return idPropuesta;
 	}
 
-	public void setIdPropuesta(int idPropuesta) {
+	public void setIdPropuesta(Integer idPropuesta) {
 		this.idPropuesta = idPropuesta;
 	}
 
-	public int getIdVentas() {
+	public Integer getIdVentas() {
 		return idVentas;
 	}
 
-	public void setIdVentas(int idVentas) {
+	public void setIdVentas(Integer idVentas) {
 		this.idVentas = idVentas;
 	}
 
-	public int getIdCliente() {
+	public Integer getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
 	}
 
-	public int getIdVehiculo() {
+	public Integer getIdVehiculo() {
 		return idVehiculo;
 	}
 
-	public void setIdVehiculo(int idVehiculo) {
+	public void setIdVehiculo(Integer idVehiculo) {
 		this.idVehiculo = idVehiculo;
 	}
 
-	public float getPrecioPropuesta() {
+	public Float getPrecioPropuesta() {
 		return precioPropuesta;
 	}
 
-	public void setPrecioPropuesta(float precioPropuesta) {
+	public void setPrecioPropuesta(Float precioPropuesta) {
 		this.precioPropuesta = precioPropuesta;
 	}
 

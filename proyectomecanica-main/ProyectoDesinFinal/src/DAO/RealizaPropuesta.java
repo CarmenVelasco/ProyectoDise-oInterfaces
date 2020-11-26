@@ -23,8 +23,8 @@ public class RealizaPropuesta {
 	 * @param fechaValidez
 	 * @param descrpcionPropuesta
 	 */
-	public Propuesta registrarPropuesta (int idVentas,int idCliente,int idVehiculo,float precioPropuesta, 
-			String fechaPropuesta, String fechaValidez, String descrpcionPropuesta, String nombreUsuario) {
+	public Propuesta registrarPropuesta (float precioPropuesta, 
+			String fechaPropuesta, String descrpcionPropuesta, String nombreUsuario) {
 		
 		Propuesta propu = null;
 		Connection con;
@@ -38,24 +38,19 @@ public class RealizaPropuesta {
 			 * Conectamos con la bbdd e introducimos el objeto mediante un insert a la tabla correspondiente.
 			 */
 			con = BBdd.conectar();
-			String sql = "insert into propuesta (id_ventas, id_cliente, id_vehiculo, precio_propuesta,"
-					+ " fecha_propuesta, fecha_validez, descripcion_propuesta, nombre_usuario) "
-					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into propuesta (precio_propuesta, fecha_propuesta, descripcion_propuesta, nombre_usuario) "
+					+ "values(?, ?, ?, ?)";
 			
 			
 			pst = con.prepareStatement(sql);
-			pst.setInt(1, idVentas);
-			pst.setInt(2, idCliente);
-			pst.setInt(3, idVehiculo);
-			pst.setFloat(4, precioPropuesta);
-			pst.setString(5, fechaPropuesta);
-			pst.setString(6, fechaValidez);
-			pst.setString(7, descrpcionPropuesta);
-			pst.setString(8, nombreUsuario);
+			pst.setFloat(1, precioPropuesta);
+			pst.setString(2, fechaPropuesta);
+			pst.setString(3, descrpcionPropuesta);
+			pst.setString(4, nombreUsuario);
 			
 			rs = pst.executeQuery();
 			
-			propu = new Propuesta(idVentas, idCliente, idVehiculo, precioPropuesta, nombreUsuario, fechaPropuesta, fechaValidez, descrpcionPropuesta);
+			propu = new Propuesta(precioPropuesta, nombreUsuario, fechaPropuesta, descrpcionPropuesta);
 		} catch (Exception e) {
 			System.out.println("Error al introsucir propuesta");
 		}

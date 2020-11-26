@@ -56,7 +56,7 @@ public class Coche extends Vehiculo{
 		this.idCoche = idCoche;
 	}
 
-	public int getIdVehiculo() {
+	public Integer getIdVehiculo() {
 		return idVehiculo;
 	}
 

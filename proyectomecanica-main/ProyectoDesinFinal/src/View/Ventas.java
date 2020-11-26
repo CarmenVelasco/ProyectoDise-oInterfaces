@@ -13,8 +13,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-/*
- * En esta vista se muestra la ventana principal de ventas
+/**
+ * 
+ * @author Carmen
+ *
  */
 public class Ventas extends JFrame {
 
@@ -26,6 +28,7 @@ public class Ventas extends JFrame {
 	private JButton btnRealizarPropuesta;
 	private JButton btnComprobarPropuesta;
 	private JButton btnVolverVentas;
+	private JButton btnVerVentas;
 
 	/**
 	 * Launch the application.
@@ -48,7 +51,7 @@ public class Ventas extends JFrame {
 	 */
 	public Ventas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 50, 800, 650);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -57,13 +60,13 @@ public class Ventas extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(233,196,106));
-		panel.setBounds(10, 55, 117, 167);
+		panel.setBounds(10, 55, 222, 484);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblVehiculos = new JLabel("VEH\u00CDCULOS");
-		lblVehiculos.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		lblVehiculos.setBounds(20, 11, 74, 14);
+		lblVehiculos.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		lblVehiculos.setBounds(60, 34, 98, 27);
 		panel.add(lblVehiculos);
 		
 		/**
@@ -81,13 +84,11 @@ public class Ventas extends JFrame {
 			
 		});
 		btnVerVehiculo.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		btnVerVehiculo.setBounds(10, 54, 97, 37);
+		btnVerVehiculo.setBounds(10, 154, 202, 88);
 		panel.add(btnVerVehiculo);
-		
-		/***
-		 * Botón registrar vehículo
-		 */
 		btnRegistrarVehiculo = new JButton("Registrar");
+		btnRegistrarVehiculo.setBounds(10, 253, 202, 88);
+		panel.add(btnRegistrarVehiculo);
 		btnRegistrarVehiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegistrarVehiculo registrarvehiculo = new RegistrarVehiculo();
@@ -97,18 +98,20 @@ public class Ventas extends JFrame {
 		btnRegistrarVehiculo.setToolTipText("");
 		btnRegistrarVehiculo.setFont(new Font("SansSerif", Font.PLAIN, 13));
 		btnRegistrarVehiculo.setBackground(Color.WHITE);
-		btnRegistrarVehiculo.setBounds(10, 109, 97, 37);
-		panel.add(btnRegistrarVehiculo);
+		
+		/***
+		 * Botón registrar vehículo
+		 */
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(156, 55, 117, 195);
+		panel_1.setBounds(271, 55, 222, 484);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		panel_1.setBackground(new Color(244,162,97));
 		
 		JLabel lblClientes = new JLabel("CLIENTES");
-		lblClientes.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		lblClientes.setBounds(24, 11, 71, 14);
+		lblClientes.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		lblClientes.setBounds(65, 37, 85, 29);
 		panel_1.add(lblClientes);
 		
 		/**
@@ -123,13 +126,11 @@ public class Ventas extends JFrame {
 		});
 		btnRegistrarClientes.setBackground(Color.WHITE);
 		btnRegistrarClientes.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		btnRegistrarClientes.setBounds(10, 56, 97, 31);
+		btnRegistrarClientes.setBounds(10, 156, 202, 88);
 		panel_1.add(btnRegistrarClientes);
-		
-		/**
-		 * Botón buscar clientes
-		 */
 		btnBuscarClientes = new JButton("Buscar");
+		btnBuscarClientes.setBounds(10, 253, 202, 88);
+		panel_1.add(btnBuscarClientes);
 		btnBuscarClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteBuscar clientebuscar = new ClienteBuscar();
@@ -138,18 +139,20 @@ public class Ventas extends JFrame {
 		});
 		btnBuscarClientes.setBackground(Color.WHITE);
 		btnBuscarClientes.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		btnBuscarClientes.setBounds(10, 114, 97, 31);
-		panel_1.add(btnBuscarClientes);
+		
+		/**
+		 * Botón buscar clientes
+		 */
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(307, 55, 117, 195);
+		panel_2.setBounds(530, 55, 222, 484);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		panel_2.setBackground(new Color(231,111,81));
 		
 		JLabel lblVentas = new JLabel("VENTAS");
-		lblVentas.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		lblVentas.setBounds(29, 11, 59, 14);
+		lblVentas.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		lblVentas.setBounds(81, 36, 85, 33);
 		panel_2.add(lblVentas);
 		
 		/**
@@ -164,7 +167,7 @@ public class Ventas extends JFrame {
 		});
 		btnRealizarPropuesta.setBackground(Color.WHITE);
 		btnRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		btnRealizarPropuesta.setBounds(10, 49, 97, 48);
+		btnRealizarPropuesta.setBounds(10, 100, 202, 88);
 		panel_2.add(btnRealizarPropuesta);
 		
 		/**
@@ -179,17 +182,29 @@ public class Ventas extends JFrame {
 		});
 		btnComprobarPropuesta.setBackground(Color.WHITE);
 		btnComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 13));
-		btnComprobarPropuesta.setBounds(10, 108, 97, 48);
+		btnComprobarPropuesta.setBounds(10, 199, 202, 88);
 		panel_2.add(btnComprobarPropuesta);
 		
+		btnVerVentas = new JButton("Ver ventas");
+        btnVerVentas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VerVentas verVentas = new VerVentas();
+                verVentas.setVisible(true);
+            }
+        });
+        btnVerVentas.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        btnVerVentas.setBackground(Color.WHITE);
+        btnVerVentas.setBounds(10, 306, 202, 88);
+        panel_2.add(btnVerVentas);
+		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(0, 0, 434, 44);
+		panel_3.setBounds(0, 0, 784, 44);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		panel_3.setBackground(new Color(231,111,81));
 		
 		JLabel lblVentas2 = new JLabel("VENTAS");
-		lblVentas2.setBounds(185, 11, 64, 23);
+		lblVentas2.setBounds(359, 11, 64, 23);
 		lblVentas2.setForeground(Color.BLACK);
 		lblVentas2.setFont(new Font("SansSerif", Font.PLAIN, 17));
 		panel_3.add(lblVentas2);
@@ -203,7 +218,7 @@ public class Ventas extends JFrame {
 			}
 		});
 		btnVolverVentas.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		btnVolverVentas.setBounds(10, 227, 50, 23);
+		btnVolverVentas.setBounds(10, 549, 78, 51);
 		btnVolverVentas.setBackground(new Color(231,111,81));
 		contentPane.add(btnVolverVentas);
 	}

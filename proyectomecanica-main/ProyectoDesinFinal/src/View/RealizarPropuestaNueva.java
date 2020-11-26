@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DAO.RealizaPropuesta;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,8 +20,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-/*
- * En esta vista registramos ua nueva propuesta
+/**
+ * 
+ * @author Carmen
+ *
  */
 public class RealizarPropuestaNueva extends JFrame {
 
@@ -28,6 +33,7 @@ public class RealizarPropuestaNueva extends JFrame {
 	private JTextField tfPrecioRealizarPropuesta;
 	private JButton btnRealizarPropuesta;
 	private JButton btnVolverRealizarPropuesta;
+	private JTextField tfFechaRealizarPropuesta;
 	
 
 	/**
@@ -51,7 +57,7 @@ public class RealizarPropuestaNueva extends JFrame {
 	 */
 	public RealizarPropuestaNueva() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 50, 800, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -61,25 +67,25 @@ public class RealizarPropuestaNueva extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 434, 44);
+		panel.setBounds(0, 0, 784, 44);
 		contentPane.add(panel);
 		
 		JLabel lblRealizarPropuestaNueva = new JLabel("Realizar propuesta nueva");
 		lblRealizarPropuestaNueva.setForeground(Color.BLACK);
 		lblRealizarPropuestaNueva.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		lblRealizarPropuestaNueva.setBounds(121, 11, 190, 22);
+		lblRealizarPropuestaNueva.setBounds(298, 11, 190, 22);
 		panel.add(lblRealizarPropuestaNueva);
 		
 		JLabel lblRealizarPropuesta = new JLabel("Realizar propuesta:");
 		lblRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lblRealizarPropuesta.setBounds(32, 55, 162, 22);
+		lblRealizarPropuesta.setBounds(10, 94, 162, 22);
 		contentPane.add(lblRealizarPropuesta);
 		
 		tfNombreYApellidosRealizarPropuesta = new JTextField();
 		tfNombreYApellidosRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		tfNombreYApellidosRealizarPropuesta.setForeground(Color.LIGHT_GRAY);
 		tfNombreYApellidosRealizarPropuesta.setText("nombre y apellidos del cliente");
-		tfNombreYApellidosRealizarPropuesta.setBounds(32, 88, 372, 20);
+		tfNombreYApellidosRealizarPropuesta.setBounds(10, 127, 764, 34);
 		contentPane.add(tfNombreYApellidosRealizarPropuesta);
 		tfNombreYApellidosRealizarPropuesta.setColumns(10);
 		
@@ -87,7 +93,7 @@ public class RealizarPropuestaNueva extends JFrame {
 		tfDescripcinVehiculoRealizarPropuesta.setText("descripci\u00F3n del veh\u00EDculo y datos de inter\u00E9s");
 		tfDescripcinVehiculoRealizarPropuesta.setForeground(Color.LIGHT_GRAY);
 		tfDescripcinVehiculoRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		tfDescripcinVehiculoRealizarPropuesta.setBounds(32, 119, 372, 73);
+		tfDescripcinVehiculoRealizarPropuesta.setBounds(10, 187, 764, 184);
 		contentPane.add(tfDescripcinVehiculoRealizarPropuesta);
 		tfDescripcinVehiculoRealizarPropuesta.setColumns(10);
 		
@@ -96,13 +102,20 @@ public class RealizarPropuestaNueva extends JFrame {
 		tfPrecioRealizarPropuesta.setForeground(Color.LIGHT_GRAY);
 		tfPrecioRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		tfPrecioRealizarPropuesta.setColumns(10);
-		tfPrecioRealizarPropuesta.setBounds(126, 203, 176, 20);
+		tfPrecioRealizarPropuesta.setBounds(231, 462, 304, 44);
 		contentPane.add(tfPrecioRealizarPropuesta);
 		
 		btnRealizarPropuesta = new JButton("Ok");
 		btnRealizarPropuesta.addActionListener(new ActionListener() {
+			
+			
 			public void actionPerformed(ActionEvent e) {
-				okPropuesta();
+				if(!(tfPrecioRealizarPropuesta.getText().equals(null)) && !(tfNombreYApellidosRealizarPropuesta.getText().equals(null))) {
+                    RealizaPropuesta registrarPropuesta = new RealizaPropuesta();
+                    registrarPropuesta.registrarPropuesta(Integer.parseInt(tfPrecioRealizarPropuesta.getText().toString()), tfFechaRealizarPropuesta.getText().toString(), tfDescripcinVehiculoRealizarPropuesta.getText(), tfNombreYApellidosRealizarPropuesta.getText().toString());
+                }
+                okPropuesta();
+				
 			}
 
 			private void okPropuesta() {
@@ -113,7 +126,7 @@ public class RealizarPropuestaNueva extends JFrame {
 		});
 		btnRealizarPropuesta.setBackground(Color.WHITE);
 		btnRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		btnRealizarPropuesta.setBounds(336, 206, 68, 44);
+		btnRealizarPropuesta.setBounds(645, 521, 129, 79);
 		contentPane.add(btnRealizarPropuesta);
 		
 		btnVolverRealizarPropuesta = new JButton("\uD83E\uDC60");
@@ -125,8 +138,15 @@ public class RealizarPropuestaNueva extends JFrame {
 		});
 		btnVolverRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		btnVolverRealizarPropuesta.setBackground(Color.WHITE);
-		btnVolverRealizarPropuesta.setBounds(32, 203, 68, 44);
+		btnVolverRealizarPropuesta.setBounds(10, 521, 122, 79);
 		contentPane.add(btnVolverRealizarPropuesta);
+		
+		tfFechaRealizarPropuesta = new JTextField();
+		tfFechaRealizarPropuesta.setText("fecha ");
+		tfFechaRealizarPropuesta.setForeground(Color.LIGHT_GRAY);
+		tfFechaRealizarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfFechaRealizarPropuesta.setColumns(10);
+		tfFechaRealizarPropuesta.setBounds(231, 396, 304, 44);
+		contentPane.add(tfFechaRealizarPropuesta);
 	}
-
 }

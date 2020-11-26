@@ -11,13 +11,7 @@ import javax.xml.bind.DatatypeConverter;
 import Exception.BBdd;
 import Models.RolUsuario;
 import Models.Usuario;
-import View.Login;
 
-/**
- * Esta clase consulta la BD y mirara si el usuario esta en ella si se evalua
- * si la contraseña incriptada en md5 es igual a la de la BD y si es asi accede en funcion
- * de su rol sino dara un error.  
- */
 public class GestionUsuario {
 	
 	public Usuario obtenerUsuario (Usuario usu) {
@@ -25,7 +19,7 @@ public class GestionUsuario {
 		
 		Connection con;
 		PreparedStatement pst;
-		ResultSet rs, rsContra;
+		ResultSet rs;
 		
 		//conexion
 		try {
@@ -33,19 +27,18 @@ public class GestionUsuario {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			
 			con = BBdd.conectar();
-			String sqlContra = "select * from usuario where nombre_usuario= ? and contrasenia = ?";
+			String sql = "select*from usuario where nombre_usuario= ? and contrasenia= ?";
 			
 			md.update(usu.getContrasenia().getBytes());
 		    byte[] digest = md.digest();
 		    String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
-		    
 			
-			pst = con.prepareStatement(sqlContra);
+			pst = con.prepareStatement(sql);
 			pst.setString(1, usu.getNombre_usuario()); //nombre_usuario= ?
-			pst.setString(2,myHash); //contrasenia= ?
+			pst.setString(2, myHash); //contrasenia= ?
 			
 			rs = pst.executeQuery();
-				
+			
 			//obtener registros
 			while (rs.next()) {
 				

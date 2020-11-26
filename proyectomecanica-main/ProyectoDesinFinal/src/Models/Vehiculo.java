@@ -11,9 +11,9 @@ public class Vehiculo {
 	 * Definimos los atributos de usuarios
 	 */
 	
-	private int idVehiculo, idConcesionario, idCliente, idVentas;
+	private Integer idVehiculo, idConcesionario, idCliente, idVentas,km;
 	private String numBastidor, matricula, marca, modelo, color, potencia, anio, descripcionVeehiculo, combustible, tipoVehiculo;
-	private float precio;
+	private Float precio;
 	
 	/**
 	 * Creamos un constructor vacio siempre esta bien tenerlo
@@ -23,7 +23,7 @@ public class Vehiculo {
 	}
 	
 	/**
-	 * Constructor al que le pasamos los parametros que sera los que les pasemos de la BBDD o lo introduzcamos nosotros.
+	 * Constructor al que le pasamos los parametros que sera los que les pasemos de la BBDD o lo Integerroduzcamos nosotros.
 	 * @param idVehiculo
 	 * @param idConcesionario
 	 * @param idCliente
@@ -36,10 +36,11 @@ public class Vehiculo {
 	 * @param potencia
 	 * @param anio
 	 * @param descripcionVeehiculo
+	 * @param km
 	 */
-	public Vehiculo(int idVehiculo, int idConcesionario, int idCliente, int idVentas, String numBastidor, String matricula, String marca, 
-			String modelo, String tipoVehiculo, String color, String potencia, String anio, String combustible, float precio,
-			String descripcionVeehiculo) {
+	public Vehiculo(Integer idVehiculo, Integer idConcesionario, Integer idCliente, Integer idVentas, String numBastidor, String matricula, String marca, 
+			String modelo, String tipoVehiculo, String color, String potencia, String anio, String combustible, Float precio,
+			String descripcionVeehiculo, Integer km) {
 		
 		this.idVehiculo = idVehiculo;
 		this.idConcesionario = idConcesionario;
@@ -56,11 +57,12 @@ public class Vehiculo {
 		this.combustible = combustible;
 		this.precio = precio;
 		this.descripcionVeehiculo = descripcionVeehiculo;
+		this.km = km;
 	}
 	
-	public Vehiculo(int idConcesionario, int idCliente, int idVentas, String numBastidor, String matricula,
+	public Vehiculo(Integer idConcesionario, Integer idCliente, Integer idVentas, String numBastidor, String matricula,
 			String marca, String modelo, String tipoVehiculo, String color, String potencia, String anio,
-			String combustible, float precio, String descripcionVeehiculo) {
+			String combustible, Float precio, String descripcionVeehiculo, Integer km) {
 		this.idConcesionario = idConcesionario;
 		this.idCliente = idCliente;
 		this.idVentas = idVentas;
@@ -75,41 +77,42 @@ public class Vehiculo {
 		this.combustible = combustible;
 		this.precio = precio;
 		this.descripcionVeehiculo = descripcionVeehiculo;
+		this.km = km;
 	}
 
 	/**
 	 * Realizamos los Setters and Getters
 	 */
 
-	public int getIdVehiculo() {
+	public Integer getIdVehiculo() {
 		return idVehiculo;
 	}
 
-	public void setIdVehiculo(int idVehiculo) {
+	public void setIdVehiculo(Integer idVehiculo) {
 		this.idVehiculo = idVehiculo;
 	}
 
-	public int getIdConcesionario() {
+	public Integer getIdConcesionario() {
 		return idConcesionario;
 	}
 
-	public void setIdConcesionario(int idConcesionario) {
+	public void setIdConcesionario(Integer idConcesionario) {
 		this.idConcesionario = idConcesionario;
 	}
 
-	public int getIdCliente() {
+	public Integer getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
 	}
 
-	public int getIdVentas() {
+	public Integer getIdVentas() {
 		return idVentas;
 	}
 
-	public void setIdVentas(int idVentas) {
+	public void setIdVentas(Integer idVentas) {
 		this.idVentas = idVentas;
 	}
 
@@ -177,11 +180,11 @@ public class Vehiculo {
 		this.descripcionVeehiculo = descripcionVeehiculo;
 	}
 
-	public float getPrecio() {
+	public Float getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
 
@@ -201,18 +204,25 @@ public class Vehiculo {
 		this.combustible = combustible;
 	}
 	
+	public Integer getKm() {
+		return km;
+	}
+
+	public void setKm(Integer km) {
+		this.km = km;
+	}
+
 	/**
 	 * Generamos el toString
 	 */
-
 	@Override
 	public String toString() {
 		return "Vehiculo [idVehiculo=" + idVehiculo + ", idConcesionario=" + idConcesionario + ", idCliente="
-				+ idCliente + ", idVentas=" + idVentas + ", numBastidor=" + numBastidor + ", matricula=" + matricula
-				+ ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", potencia=" + potencia + ", anio="
-				+ anio + ", descripcionVeehiculo=" + descripcionVeehiculo + ", precio=" + precio + ", tipoVehiculo="
-				+ tipoVehiculo + ", combustible=" + combustible + "]";
+				+ idCliente + ", idVentas=" + idVentas + ", km=" + km + ", numBastidor=" + numBastidor + ", matricula="
+				+ matricula + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", potencia=" + potencia
+				+ ", anio=" + anio + ", descripcionVeehiculo=" + descripcionVeehiculo + ", combustible=" + combustible
+				+ ", tipoVehiculo=" + tipoVehiculo + ", precio=" + precio + "]";
 	}
-	
+
 	
 }

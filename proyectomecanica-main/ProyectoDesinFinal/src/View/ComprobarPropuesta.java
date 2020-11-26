@@ -7,10 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import DAO.CompruebaPropuesta;
-import DAO.GestionUsuario;
 import Models.Clientes;
 import Models.Propuesta;
+import DAO.CompruebaPropuesta;
+import DAO.GestionUsuario;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -23,8 +23,10 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-/*
- * En esta vista se busca las propuestas ya almacenadas en la BD.
+/**
+ * 
+ * @author Carmen
+ *
  */
 public class ComprobarPropuesta extends JFrame {
 
@@ -34,8 +36,9 @@ public class ComprobarPropuesta extends JFrame {
 	private JButton btnVolverComprobarPropuesta;
 	private JTextField tfEmpleadoComprobarPropuesta;
 	private JTextField tfCocheComprobarPropuesta;
-	private JTextField tfTipoCocheComprobarPropuesta;
+	private JTextField tfFechaValidezComprobarPropuesta;
 	private JTextField tfPrecioComprobarPropuesta;
+	private JTextField tfFechaPropuestaComprobarPropuesta;
 
 	/**
 	 * Launch the application.
@@ -58,7 +61,7 @@ public class ComprobarPropuesta extends JFrame {
 	 */
 	public ComprobarPropuesta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 50, 800, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -68,44 +71,44 @@ public class ComprobarPropuesta extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 434, 44);
+		panel.setBounds(0, 0, 784, 44);
 		contentPane.add(panel);
 		
 		JLabel lblComprobarPropuesta = new JLabel("Comprobar propuesta");
 		lblComprobarPropuesta.setForeground(Color.BLACK);
 		lblComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		lblComprobarPropuesta.setBounds(140, 11, 165, 22);
+		lblComprobarPropuesta.setBounds(308, 11, 165, 22);
 		panel.add(lblComprobarPropuesta);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(25, 58, 379, 192);
+		panel_1.setBounds(25, 103, 735, 483);
 		contentPane.add(panel_1);
 		
 		JLabel lbl21 = new JLabel("Cliente:");
 		lbl21.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl21.setBounds(22, 13, 71, 16);
+		lbl21.setBounds(32, 61, 71, 16);
 		panel_1.add(lbl21);
 		
 		JLabel lbl22 = new JLabel("Empleado:");
 		lbl22.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl22.setBounds(22, 40, 71, 16);
+		lbl22.setBounds(32, 117, 71, 16);
 		panel_1.add(lbl22);
 		
 		JLabel lbl25 = new JLabel("Precio total:");
 		lbl25.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl25.setBounds(22, 121, 84, 16);
+		lbl25.setBounds(32, 352, 84, 16);
 		panel_1.add(lbl25);
 		
 		JLabel lbl23 = new JLabel("Coche:");
 		lbl23.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl23.setBounds(22, 67, 55, 16);
+		lbl23.setBounds(32, 194, 55, 16);
 		panel_1.add(lbl23);
 		
-		JLabel lbl24 = new JLabel("Tipo de coche:");
+		JLabel lbl24 = new JLabel("Fech validez:");
 		lbl24.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		lbl24.setBounds(22, 94, 89, 16);
+		lbl24.setBounds(32, 281, 89, 16);
 		panel_1.add(lbl24);
 		
 		btnComprobarPropuesta = new JButton("Ok");
@@ -134,6 +137,14 @@ public class ComprobarPropuesta extends JFrame {
 				
 				if (pro != null) {
 					JOptionPane.showMessageDialog(contentPane, "ok");
+					tfClienteComprobarPropuesta.setText(pro.getIdCliente().toString());
+					tfEmpleadoComprobarPropuesta.setText(pro.getNombreUsuario());
+					tfCocheComprobarPropuesta.setText(pro.getIdVehiculo().toString());
+					tfPrecioComprobarPropuesta.setText(pro.getPrecioPropuesta().toString());
+					tfFechaValidezComprobarPropuesta.setText(pro.getFechaValidez());
+					tfFechaPropuestaComprobarPropuesta.setText(pro.getFechaPropuesta());
+					
+					
 				} else {
 					JOptionPane.showMessageDialog(contentPane, "No existe tal propuesta", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -148,13 +159,13 @@ public class ComprobarPropuesta extends JFrame {
 		});
 		btnComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		//btnComprobarPropuesta.setBackground(Color.WHITE);
-		btnComprobarPropuesta.setBounds(292, 158, 77, 23);
+		btnComprobarPropuesta.setBounds(620, 411, 105, 54);
 		panel_1.add(btnComprobarPropuesta);
 		
 		tfClienteComprobarPropuesta = new JTextField();
 		tfClienteComprobarPropuesta.setBackground(Color.WHITE);
 		tfClienteComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		tfClienteComprobarPropuesta.setBounds(103, 12, 266, 20);
+		tfClienteComprobarPropuesta.setBounds(113, 55, 612, 28);
 		panel_1.add(tfClienteComprobarPropuesta);
 		tfClienteComprobarPropuesta.setColumns(10);
 		
@@ -169,35 +180,46 @@ public class ComprobarPropuesta extends JFrame {
 		//btnVolverComprobarPropuesta.setBackground(Color.WHITE);
 		btnVolverComprobarPropuesta.setBackground(new Color(231,111,81));
 		btnVolverComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		btnVolverComprobarPropuesta.setBounds(22, 158, 48, 23);
+		btnVolverComprobarPropuesta.setBounds(32, 411, 105, 54);
 		panel_1.add(btnVolverComprobarPropuesta);
 		
 		tfEmpleadoComprobarPropuesta = new JTextField();
 		tfEmpleadoComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		tfEmpleadoComprobarPropuesta.setBackground(Color.WHITE);
-		tfEmpleadoComprobarPropuesta.setBounds(103, 39, 266, 20);
+		tfEmpleadoComprobarPropuesta.setBounds(113, 111, 612, 28);
 		panel_1.add(tfEmpleadoComprobarPropuesta);
 		tfEmpleadoComprobarPropuesta.setColumns(10);
 		
 		tfCocheComprobarPropuesta = new JTextField();
 		tfCocheComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		tfCocheComprobarPropuesta.setBounds(103, 66, 266, 20);
+		tfCocheComprobarPropuesta.setBounds(113, 173, 612, 59);
 		panel_1.add(tfCocheComprobarPropuesta);
 		tfCocheComprobarPropuesta.setColumns(10);
 		
-		tfTipoCocheComprobarPropuesta = new JTextField();
-		tfTipoCocheComprobarPropuesta.setBackground(Color.WHITE);
-		tfTipoCocheComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		tfTipoCocheComprobarPropuesta.setBounds(103, 93, 266, 20);
-		panel_1.add(tfTipoCocheComprobarPropuesta);
-		tfTipoCocheComprobarPropuesta.setColumns(10);
+		tfFechaValidezComprobarPropuesta = new JTextField();
+		tfFechaValidezComprobarPropuesta.setBackground(Color.WHITE);
+		tfFechaValidezComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfFechaValidezComprobarPropuesta.setBounds(113, 275, 206, 28);
+		panel_1.add(tfFechaValidezComprobarPropuesta);
+		tfFechaValidezComprobarPropuesta.setColumns(10);
 		
 		tfPrecioComprobarPropuesta = new JTextField();
 		tfPrecioComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		tfPrecioComprobarPropuesta.setBackground(Color.WHITE);
-		tfPrecioComprobarPropuesta.setBounds(103, 121, 185, 36);
+		tfPrecioComprobarPropuesta.setBounds(113, 347, 502, 53);
 		panel_1.add(tfPrecioComprobarPropuesta);
 		tfPrecioComprobarPropuesta.setColumns(10);
+		
+		JLabel lbl245 = new JLabel("Fecha propuesta:");
+		lbl245.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		lbl245.setBounds(349, 281, 105, 16);
+		panel_1.add(lbl245);
+		
+		tfFechaPropuestaComprobarPropuesta = new JTextField();
+		tfFechaPropuestaComprobarPropuesta.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		tfFechaPropuestaComprobarPropuesta.setColumns(10);
+		tfFechaPropuestaComprobarPropuesta.setBackground(Color.WHITE);
+		tfFechaPropuestaComprobarPropuesta.setBounds(454, 275, 271, 28);
+		panel_1.add(tfFechaPropuestaComprobarPropuesta);
 	}
-
 }

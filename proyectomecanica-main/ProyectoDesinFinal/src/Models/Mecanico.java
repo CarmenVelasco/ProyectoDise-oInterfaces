@@ -11,6 +11,7 @@ public class Mecanico extends Usuario{
 	 */
 	
 	private int idMecanico,idEspecialidad, idJefeMecanico;
+	private String tipoEmpleado;
 	
 	/**
 	 * Creamos un constructor vacio siempre esta bien tenerlo
@@ -25,12 +26,13 @@ public class Mecanico extends Usuario{
 	 * @param idEspecialidad
 	 * @param idJefeMecanico
 	 */
-	public Mecanico(int idMecanico, int idEspecialidad, int idJefeMecanico) {
+	public Mecanico(int idMecanico, int idEspecialidad, int idJefeMecanico, String tipoMecanico) {
 		
 		super();
 		this.idMecanico = idMecanico;
 		this.idEspecialidad = idEspecialidad;
 		this.idJefeMecanico = idJefeMecanico;
+		this.tipoEmpleado = tipoMecanico;
 		
 	}
 
@@ -63,14 +65,20 @@ public class Mecanico extends Usuario{
 		this.idJefeMecanico = idJefeMecanico;
 	}
 
+	public String getTipoEmpleado() {
+		return tipoEmpleado;
+	}
+
+	public void setTipoEmpleado(String tipoEmpleado) {
+		this.tipoEmpleado = tipoEmpleado;
+	}
+	
 	/**
 	 * Generamos el toString
 	 */
-	
 	@Override
 	public String toString() {
-		return "Mecanico [idUsuario=" + super.getId_usuario() + ", idMecanico=" + idMecanico + ", idEspecialidad=" + idEspecialidad + ", idJefeMecanico="
-				+ idJefeMecanico + "]";
+		return "Mecanico [idMecanico=" + idMecanico + ", idEspecialidad=" + idEspecialidad + ", idJefeMecanico="
+				+ idJefeMecanico + ", tipoEmpleado=" + tipoEmpleado + "]";
 	}
-	
 }

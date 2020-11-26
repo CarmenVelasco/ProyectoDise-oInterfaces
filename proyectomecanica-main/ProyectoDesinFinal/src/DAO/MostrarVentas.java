@@ -4,13 +4,14 @@ import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Exception.BBdd;
 import Models.Propuesta;
 public class MostrarVentas {
 
-	public ArrayList<Propuesta> obtenerReparacion () {
+	public ArrayList<Propuesta> obtenerReparacion() {
 		Propuesta propuesta = null;
 		
 		Connection con;
@@ -22,7 +23,7 @@ public class MostrarVentas {
 		try {
 			
 			con = BBdd.conectar();
-			String sqlContra = "select count(*) from propuesta where estado_propuesta = ?";
+			String sqlContra = "select * from propuesta where estado_propuesta = ?";
 			
 			pst = con.prepareStatement(sqlContra);
 			pst.setString(1, "Finalizado");
@@ -41,6 +42,32 @@ public class MostrarVentas {
 		}
 		
 		return listaPropuesta;
+	}
+	
+	public ResultSet obtenerTotal() throws SQLException {
+		
+		Propuesta propuesta = null;
+		
+		Connection con;
+		PreparedStatement pst = null;
+		ResultSet rs, rsContra;
+		
+		//conexion
+		try {
+			
+			con = BBdd.conectar();
+			String sqlContra = "select count(*) from propuesta where estado_propuesta = ?";
+			
+			pst = con.prepareStatement(sqlContra);
+			pst.setString(1, "Finalizado");
+			
+			rs = pst.executeQuery();
+						
+		} catch (Exception e) {
+			System.out.println("Error en obtener la propuesta");
+		}
+		
+		return pst.executeQuery();
 	}
 	
 }

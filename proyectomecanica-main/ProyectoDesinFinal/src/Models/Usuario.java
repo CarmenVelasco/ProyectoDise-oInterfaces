@@ -46,9 +46,25 @@ public class Usuario {
 		this.nif_usuario = nif_usuario;
 		this.email_usuario = email_usuario;
 		this.estudios = estudios;
-		this.rol.compareTo(rol);
+		this.rol = rol;
 		
 	}
+	
+	public Usuario(Integer id_usuario, Integer id_concesionario, String nombre_usuario, String contrasenia, Integer antiguedad,
+			Integer sueldo, String tipo_contrato, String nif_usuario, String email_usuario, String estudios) {
+	
+	this.id_usuario = id_usuario;
+	this.id_concesionario = id_concesionario;
+	this.nombre_usuario = nombre_usuario;
+	this.contrasenia = contrasenia;
+	this.antiguedad = antiguedad;
+	this.sueldo = sueldo;
+	this.tipo_contrato = tipo_contrato;
+	this.nif_usuario = nif_usuario;
+	this.email_usuario = email_usuario;
+	this.estudios = estudios;
+	
+}
 
 	public Usuario() {
 	}

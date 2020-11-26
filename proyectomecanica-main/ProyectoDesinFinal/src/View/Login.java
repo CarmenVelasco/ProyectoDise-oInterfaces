@@ -6,10 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.xml.bind.DatatypeConverter;
 
-import DAO.GestionUsuario;
 import Models.Usuario;
+import DAO.GestionUsuario;
+import Exception.BBdd;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,22 +19,19 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
-/*
- * En esta vista es donde comienza el programa y nos logueamos y en función de que tipo de usuario sea
- * se mostrará una venta u otra.
- */
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfUsuario;
 	private JButton btnValidar;
 	private JPasswordField tfPassword;
-	private static Login frame;
 
 	/**
 	 * Launch the application.
@@ -43,7 +40,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new Login();
+					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -95,15 +92,11 @@ public class Login extends JFrame {
 		btnValidar.setForeground(Color.WHITE);
 		btnValidar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					validar();
-				} catch (NoSuchAlgorithmException e1) {
-					e1.printStackTrace();
-				}
+				validar();
 			}
 
-			public void validar() throws NoSuchAlgorithmException {
-				
+			private void validar() {
+				// TODO Auto-generated method stub
 				String nombre_usuario = tfUsuario.getText();
 				String contrasenia = String.valueOf(tfPassword.getPassword());
 				
@@ -120,26 +113,54 @@ public class Login extends JFrame {
 					JOptionPane.showMessageDialog(contentPane, "Bienvenido");
 					
 					//this.dispose();
+					
 					switch(usu.getRol()) {
 					
-						case Ventas:  
+						case Ventas:
 							Ventas ventas = new Ventas();
 							ventas.setVisible(true);
+						break;
+						
+						case Mecanico:
+							
+							Connection con = BBdd.conectar();
+							String sql = "select tipo_empleado from mecanico where id_usuario = ?";
+							
+							
+						try {
+							
+							PreparedStatement pst = con.prepareStatement(sql);
+							pst.setInt(1, usu.getId_usuario());
+							
+							ResultSet rs = pst.executeQuery();
+							
+							rs.next();
+							
+							if(rs.getString("tipo_empleado").equals("Jefe")) {
+								
+								JefeMecanico jMecanico = new JefeMecanico();
+								jMecanico.setVisible(true);
+								
+							}else if(rs.getString("tipo_empleado").equals("Empleado")) {
+								
+								MecanicoDAO1 mecanico = new MecanicoDAO1();
+								mecanico.setVisible(true);
+								
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+							
 						break;
 						
 						case Jefe:
 							
 						break;
 						
-						case Mecanico:
-							
-						break;
-						
 						default:
-							System.out.print("¡Error! Dato no valido.");
+							System.out.print("Error no tienes permisos");
 						break;
 					}
-					
 				} else{
 					JOptionPane.showMessageDialog(contentPane, "Datos invalidos", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -162,21 +183,16 @@ public class Login extends JFrame {
 		
 		btnSalir.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		btnSalir.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent e) {
 				salir();
 			}
 
 			private void salir() {
-				
+				// TODO Auto-generated method stub
 				System.exit(0);
 			}
 		});
-		
 		btnSalir.setBounds(96, 153, 71, 23);
 		panel.add(btnSalir);
-		
-		//hace que el boton de login funcione con la tecla enter
-		frame.getRootPane().setDefaultButton(btnValidar);
 	}
 }
